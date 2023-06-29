@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  redis-stack:
+    image: hub-mirror.c.163.com/redis/redis-stack:latest
+    restart: always
+    networks:   # 配置网络
+      - dev_net
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    volumes:
+      - $PWD/redis_db/:/data
+    environment:
+      REDIS_ARGS: "--requirepass II6DYHosuDiJhAac --save 60 1000 --appendonly yes"
+  bot_gpu:
+    image: qa_bot:v0.1
+    restart: always
+    networks: 
+      - dev_net
+    volumes:
+      - $PWD/:/app
+    depends_on:
+      - redis-stack
+    ports:
+      - "8080:8080"
+      - "8501:8501"
+    deploy:  # 设置此容器使用gpu
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+networks:  # 网络设置
+  dev_net:
+    name: dev_net
+    external: true

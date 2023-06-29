@@ -32,7 +32,7 @@ def call_bot_api(
 
 def simple_ui():
     # write a sample webpage to ask questions
-    st.title("ITT Q&A Bot:")
+    st.title("Q&A AI Bot:")
     query = st.text_input("Enter your question below:")
 
     button_container = st.container()

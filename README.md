@@ -1,4 +1,4 @@
-# ITT Q&A AI Bot
+# Q&A AI Bot
 ## Introduction
 This is a local knowledge-based Q&A AI bot designed to provide information and answer questions within a specific domain or area of expertise, implemented using [RWKV-3B](https://github.com/BlinkDL/RWKV-LM) and [langchain](https://github.com/hwchase17/langchain).
 

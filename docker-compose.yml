@@ -34,4 +34,4 @@ services:
 networks:  # 网络设置
   dev_net:
     name: dev_net
-    external: true
+    #external: true
